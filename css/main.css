@@ -1,0 +1,16 @@
+.main-title {
+    color: #009688;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.layui-tab {
+    width: 600px;
+    margin: 40px auto;
+}
+
+.layui-input,
+textarea {
+    width: 200px;
+}

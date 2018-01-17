@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="main-title">学生端报修系统(学生:<span id="show-user"></span>已登录)</h1>
+    <a href="login.html" style="position:fixed;top:45px;left:100px"><i class="layui-icon" style="font-size: 30px; color: #009688;">&#xe65c;</i></a>
+    <div class="main">
+        <div class="layui-tab" lay-filter="managerTab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">设备报修</li>
+                <li>设备补充</li>
+                <li lay-id="repair">报修未处理</li>
+                <li lay-id="supplement">补充未处理</li>
+                <li lay-id="logs">已处理</li>
+            </ul>
+
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">设备</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="equip" required lay-verify="required" placeholder="请输入设备" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">楼名</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="bname" required lay-verify="required" placeholder="请输入楼名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">楼层</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="floor" required lay-verify="required|number" placeholder="请输入楼层" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">房号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="room" required lay-verify="required|number" placeholder="请输入楼层" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">描述说明</label>
+                            <div class="layui-input-block">
+                                <textarea name="detail" placeholder="请输入描述说明" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item ">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="repair">立即报修</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-tab-item">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">教具</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="teachaid" required lay-verify="required" placeholder="请输入设备" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">楼名</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="bname" required lay-verify="required" placeholder="请输入楼名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">楼层</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="floor" required lay-verify="required|number" placeholder="请输入楼层" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">房号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="room" required lay-verify="required|number" placeholder="请输入房号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">需求数量</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="qty" required lay-verify="required|number" placeholder="请输入数量" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item ">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="supplement">上报补充</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>rid</th>
+                                <th>学号</th>
+                                <th>报修时间</th>
+                                <th>楼名</th>
+                                <th>楼层</th>
+                                <th>房号</th>
+                                <th>设备</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repair" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>spid</th>
+                                <th>学号</th>
+                                <th>登记时间</th>
+                                <th>楼名</th>
+                                <th>楼层</th>
+                                <th>房号</th>
+                                <th>教具</th>
+                                <th>数量</th>
+                            </tr>
+                        </thead>
+                        <tbody id="supplement" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>logid</th>
+                                <th>学号</th>
+                                <th>登记时间</th>
+                                <th>楼名</th>
+                                <th>楼层</th>
+                                <th>教具</th>
+                                <th>处理时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./layui/layui.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

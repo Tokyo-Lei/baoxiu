@@ -1,0 +1,25 @@
+.login-title {
+    color: #009688;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.login .layui-form {
+    width: 400px;
+    margin: 10px auto;
+}
+
+.layui-input {
+    width: 200px;
+}
+
+
+/* label {
+    margin-bottom: 30px;
+} */
+
+.layui-tab {
+    width: 500px;
+    margin: 40px auto;
+}

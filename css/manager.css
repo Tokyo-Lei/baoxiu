@@ -1,0 +1,19 @@
+.manager-title {
+    color: #009688;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.manager {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.layui-tab {
+    margin: 40px auto 0 auto;
+}
+
+.del {
+    cursor: pointer;
+}

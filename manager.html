@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link href="css/manager.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="manager">
+        <h1 class="manager-title">管理员处理系统 (管理员:
+            <span id="show-user"></span>已登录)
+        </h1>
+        <a href="login.html" style="position:fixed;top:60px;left:100px"><i class="layui-icon" style="font-size: 30px; color: #009688;">&#xe65c;</i></a>
+        <div class="layui-tab" lay-filter="managerTab">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-id="repair">报修记录</li>
+                <li lay-id="supplement">补充记录</li>
+                <li lay-id="bueq">设备信息</li>
+                <li lay-id="stock">库存信息</li>
+                <li lay-id="logs">处理记录</li>
+                <li lay-id="search">查询</li>
+
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>rid</th>
+                                <th>学号</th>
+                                <th>报修时间</th>
+                                <th>楼名</th>
+                                <th>楼层</th>
+                                <th>房号</th>
+                                <th>设备</th>
+                                <th>说明</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repair" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>spid</th>
+                                <th>学号</th>
+                                <th>补充时间</th>
+                                <th>楼名</th>
+                                <th>楼层</th>
+                                <th>房号</th>
+                                <th>教具</th>
+                                <th>数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="supplement" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>楼名</th>
+                                <th>设备名称</th>
+                                <th>品牌</th>
+                                <th>投入使用年月</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bueq" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>教具名称</th>
+                                <th>库存量</th>
+                                <th>阈值</th>
+                                <th>供应商</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stock" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>logid</th>
+                                <th>学号</th>
+                                <th>时间</th>
+                                <th>楼名</th>
+                                <th>楼层</th>
+                                <th>教具</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="layui-tab-item">
+
+              <input type="text" style="height: 30px;line-height: 30px;width:300px;" placeholder="输入教具名称进行各个楼的总需求查询"><button id="searchTeachId" style="margin-left: 10px;border-radius: 4px;" class="layui-btn">查询</button>
+              <input type="text" style="height: 30px;line-height: 30px;width:300px;margin-left: 100px;" placeholder="输入楼名查询某一教学楼的全部教具需求"><button id="searchBname" style="margin-left: 10px;border-radius: 4px;" class="layui-btn">查询</button>
+                    <table class="layui-table">
+                        <thead >
+<!--                             <tr>
+                                <th>学号</th>
+                                <th>楼名</th>
+                                <th>教具</th>
+                                <th>总需求</th>
+                            </tr> -->
+                        </thead>
+<!--                         <thead style="display: none">
+                            <tr>
+                                <th>学号</th>
+                                <th>楼层</th>
+                                <th>房号</th>
+                                <th>教具</th>
+                                <th>需求数量</th>
+                            </tr>
+                        </thead> -->
+                        <tbody id="searchVal" class="layui-anim">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    <script src="./layui/layui.js"></script>
+    <script src="./js/manager.js"></script>
+</body>
+
+</html>
