@@ -1,0 +1,15 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_repair`(IN `sid` INT(10), IN `bname` VARCHAR(20), IN `floor` INT(2), IN `room` INT(5), IN `equip` VARCHAR(20), IN `detail` TEXT)
+BEGIN
+INSERT into repair(sid, time, bname, floor, room, equip, detail)
+VALUES(sid, CURRENT_TIME, bname, floor, room, equip, detail);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_supplement`(IN `sid` INT(10), IN `bname` VARCHAR(20), IN `floor` INT(2), IN `room` INT(5), IN `teachaid` VARCHAR(20), IN `qty` INT(4))
+BEGIN
+INSERT into supplement(sid, time, bname, floor, room, teachaid, qty)
+VALUES(sid, CURRENT_TIME, bname, floor, room, teachaid, qty);
+END$$
+DELIMITER ;

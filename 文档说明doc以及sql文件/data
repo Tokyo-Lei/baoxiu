@@ -1,0 +1,42 @@
+insert into student values(2014080268,123456);
+insert into student values(2015150098,123456);
+insert into student values(2015150196,123456);
+insert into student values(2015150187,123456);
+insert into student values(2014000000,444444);
+insert into student values(2015000000,555555);
+insert into student values(2016000000,666666);
+insert into student values(2017000000,777777);
+
+insert into manager values(135490,123456);
+insert into manager values(201400,444444);
+insert into manager values(201500,555555);
+insert into manager values(201600,666666);
+insert into manager values(201700,777777);
+insert into manager values(201800,888888);
+
+insert into bueq values('H1','computer','lenovo',200808,'无');
+insert into bueq values('H2','projector','sony',200808,'无');
+insert into bueq values('L1','computer','apple',201709,'无');
+insert into bueq values('L3','aircon','gree',201709,'无');
+insert into bueq values('L3','waterma ','gree',201709,'无');
+insert into bueq values('SYA','mike','sony',2010010,'无');
+
+insert into stock values('chalk_w','31','30','s001');
+insert into stock values('chalk_c','32','30','s001');
+insert into stock values('eraser','30,'15','s001');
+insert into stock values('marker_b','50','40','s002');
+insert into stock values('marker_blue','45','35','s002');
+insert into stock values('marker_r','80','35','s002');
+insert into stock values('duster','20','10','s002');
+
+INSERT INTO repair (`rid`, `sid`, `time`, `bname`, `floor`, `room`, `equip`, `detail`) VALUES (NULL, '2014000000', CURRENT_DATE(), 'L1', '3', '311', 'computer', '死机');
+INSERT INTO repair (`rid`, `sid`, `time`, `bname`, `floor`, `room`, `equip`, `detail`) VALUES (NULL, '2017000000', CURRENT_DATE(), 'SYA', '1', '108', 'mike', '噪声过大');
+
+INSERT INTO supplement (sid, time, bname,room, teachaid, qty) VALUES (2014000000, CURRENT_TIME(), 'H2’, 205, ‘duster’, 2);
+INSERT INTO supplement (sid, time, bname,room, teachaid, qty) VALUES (2015150196, CURRENT_TIME(), ‘L3’,501, ‘marker_r’, 1);
+INSERT INTO supplement (sid, time, bname,room, teachaid, qty) VALUES ( 2014080268, CURRENT_DATE(), 'L1', 406, 'marker_b', 5');
+INSERT INTO `supplement` (sid, time, bname,floor,room, teachaid, qty) VALUES (2014080268, CURRENT_TIME(), 'H1', 1, 101, 'chalk_w', 10);
+INSERT INTO `supplement` (sid, time, bname,floor,room, teachaid, qty) VALUES (2014080268, CURRENT_TIME(), ‘L1', 1, 101, ‘marker_b’, 100);
+
+
+

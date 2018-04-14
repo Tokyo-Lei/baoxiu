@@ -1,0 +1,31 @@
+CREATE TRIGGER `check_qoh` BEFORE DELETE ON `supplement`
+ FOR EACH ROW BEGIN
+DECLARE qoh1 int(4);
+SELECT qoh into qoh1 from stock where teachaid = old.teachaid;
+if qoh1 < old.qty THEN
+insert into supplement(sid) values(000000000000);
+END IF;
+END
+
+CREATE TRIGGER `repair_logs` BEFORE DELETE ON `repair`
+ FOR EACH ROW BEGIN
+insert into logs(sid, time, bname, addr, item, tsolve)
+values(old.sid,  old.time, old.bname, old.floor, old.equip, CURRENT_DATE);
+END
+
+CREATE TRIGGER `supply_logs` AFTER DELETE ON `supplement`
+ FOR EACH ROW BEGIN
+DECLARE qoh1 int(4);
+DECLARE threshold1 int(4);
+INSERT into logs(sid, time, bname, addr, item, tsolve)
+VALUES(old.sid, old.time, old.bname, old.room, old.teachaid, CURRENT_DATE);
+SELECT qoh into qoh1 from stock where teachaid = old.teachaid;
+SELECT threshold into threshold1 from stock where teachaid = old.teachaid;
+IF qoh1 - old.qty >= threshold1 THEN
+UPDATE stock
+      set qoh := qoh - old.qty  where teachaid = old.teachaid;
+ELSE
+UPDATE stock
+     set qoh := 2 * qoh1 where teachaid = old.teachaid;
+END IF;
+END

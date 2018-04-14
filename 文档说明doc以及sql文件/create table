@@ -1,0 +1,76 @@
+create table student
+(sid int(10),
+ scod int(6),
+ primary key(sid));
+
+ create table manager
+ (mid int(6),
+  mcod int(6),
+  primary key(mid));
+
+create table bueq
+(bname varchar(20),
+ equip varchar(20),
+ brand varchar(20) not null,
+ time int(6),
+ remarks text,
+ primary key(bname, equip));
+
+ create table stock
+ (teachaid varchar(20),
+  qoh int(4),
+  threshold int(4),
+  supplier varchar(20),
+  primary key(teachaid));
+
+
+  create table repair
+  (rid int(5) AUTO_INCREMENT,
+   sid int(10),
+   time datetime,
+   bname varchar(20) NOT NUll,
+   floor int(2) NOT NULL,
+   room int(5),
+   equip varchar(20) NOT NUll,
+   detail TEXT,
+   primary key(rid),
+   foreign key(bname) references bueq(bname),
+   foreign key(sid) references student(sid));
+
+create table supplement
+(spid int(5) AUTO_INCREMENT,
+ sid int(10),
+ time datetime,
+ bname varchar(20) NOT NUll,
+ floor int(2),
+ room int(5) not null,
+ teachaid varchar(20),
+ qty int(4),
+ primary key(spid),
+ foreign key(bname) references bueq(bname),
+ foreign key(teachaid) references stock(teachaid),
+ foreign key(sid) references student(sid));
+
+ create table logs
+ (logid int(5) AUTO_INCREMENT,
+  sid int(10),
+  time datetime not null,
+  bname varchar(20) not null,
+  addr int(5) not null,
+  item varchar(20) not null,
+  tsolve datetime not null,
+  who int(6),
+  primary key(logid),
+  foreign key(bname) references bueq(bname),
+  foreign key(sid) references student(sid),
+  foreign key(who) references manager(mid));
+
+
+
+
+
+
+
+
+
+
